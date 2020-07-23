@@ -25,16 +25,51 @@ function addBookToLibrary(book) {
 function render() {
   document.getElementById("book-container").innerHTML = "";
   myLibrary.forEach((book, index) => {
-    div = document.createElement('DIV');
-    div.innerHTML = book.info()
+    div = document.createElement('DIV')
+    div.setAttribute('class', 'book')
+    //div.innerHTML = book.info()
+
+
+    h1 = document.createElement('H1')
+    h1.setAttribute('class', 'book-title')
+    h1.innerHTML = book.title
+    div.appendChild(h1)
+
+    div2 = document.createElement('DIV')
+    div2.setAttribute('class', 'book-info')
+    div.appendChild(div2)
+
+    sp = document.createElement('SPAN')
+    sp.setAttribute('class', 'span')
+    sp.innerHTML = `Author: ${book.author}`
+    div2.appendChild(sp)
+
+    sp2 = document.createElement('SPAN')
+    sp2.setAttribute('class', 'span')
+    sp2.innerHTML = `Num. Pages: ${book.numPages}`
+    div2.appendChild(sp2)
+
+    sp3 = document.createElement('SPAN')
+    sp3.setAttribute('class', 'span')
+    sp3.innerHTML = `${book.read ? 'Already Read' : 'Not Read'}`
+    div2.appendChild(sp3)
+
+    div3 = document.createElement('DIV')
+    div3.setAttribute('class', 'btns')
+    div.appendChild(div3)
+
     btn = document.createElement('BUTTON')
     btn.innerHTML = 'Remove'
     btn.setAttribute('onclick', `removeBook(${index})`);
-    div.appendChild(btn)
+    btn.setAttribute('class', `btn`);
+    div3.appendChild(btn)
+    
     btn2 = document.createElement('BUTTON')
     btn2.innerHTML = 'Read/Unread'
     btn2.setAttribute('onclick', `toggleBook(${index})`);
-    div.appendChild(btn2)
+    btn2.setAttribute('class', `btn`);
+    div3.appendChild(btn2)
+
     document.getElementById("book-container").appendChild(div);
   }) 
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));

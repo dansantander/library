@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 <body>
 
-<div id="book-container">
+<div id="book-container" class="book-container">
 
 
 </div>
 
 
-<div id="form">
+<div class="form-container">
   <form>
     <label for="title">Title:</label><br>
     <input type="text" id="title"><br>
@@ -29,10 +29,7 @@
     <input type="checkbox" id="read"><br>
 
   </form>
-
-
-
-  <button type="button" id="add-book" onclick = "createBookWithForm()">Add Book!</button>
+  <button type="button" class = "btn "id="add-book" onclick = "createBookWithForm()">Add Book!</button>
 </div>
 
 
