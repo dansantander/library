@@ -37,6 +37,7 @@ function render() {
     div.appendChild(btn2)
     document.getElementById("book-container").appendChild(div);
   }) 
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
 /* const book1 = new Book('Game Of Thrones', 'George Martin', 789, 'already read' );
@@ -44,6 +45,24 @@ addBookToLibrary(book1)
 render() */
 
 function createBookWithForm(){
+  if (document.getElementById("title").value.trim() == "") {
+    alert('Fill Title')
+    document.getElementById("title").value = ''
+    document.getElementById("title").focus()
+    return
+  }
+  if (document.getElementById("author").value.trim() == "") {
+    alert('Fill Author')
+    document.getElementById("author").value = ''
+    document.getElementById("author").focus()
+    return
+  }
+  if (document.getElementById("numPages").value.trim() == "") {
+    alert('Fill Number of Pages')
+    document.getElementById("numPages").value = ''
+    document.getElementById("numPages").focus()
+    return
+  }
 
   t = document.getElementById("title").value
   a = document.getElementById("author").value
@@ -67,3 +86,21 @@ function toggleBook(index) {
   myLibrary[index].toggleRead()
   render()
 }
+
+function checkStored() {
+  if(localStorage.getItem("myLibrary")) {
+      myLocalLibrary = JSON.parse((localStorage.getItem("myLibrary")));
+      console.log(myLocalLibrary);
+      myLocalLibrary.forEach((book, index) => {
+        t = book.title
+        a = book.author
+        p = book.numPages
+        r = book.read
+        const book2 = new Book(t, a, p, r );
+        addBookToLibrary(book2)
+      })
+      render();
+  }
+}
+
+checkStored();
