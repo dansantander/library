@@ -15,6 +15,10 @@ Book.prototype.toggleRead = function () {
 
 const myLibrary = [];
 
+function addBookToLibrary(book) {
+  myLibrary.push(book);
+}
+
 function render() {
   document.getElementById('book-container').innerHTML = '';
   myLibrary.forEach((book, index) => {
@@ -69,10 +73,6 @@ function render() {
 }
 
 /* eslint-disable */
-function addBookToLibrary(book) {
-  myLibrary.push(book);
-}
-
 function removeBook(index) {
   myLibrary.splice(index, 1);
   render();
@@ -82,7 +82,6 @@ function toggleBook(index) {
   myLibrary[index].toggleRead();
   render();
 }
-/* eslint-enable */
 
 function createBookWithForm() {
   const title = document.getElementById('title');
@@ -126,6 +125,7 @@ function createBookWithForm() {
   addBookToLibrary(book);
   render();
 }
+/* eslint-enable */
 
 function checkStored() {
   if (localStorage.getItem('myLibrary')) {
