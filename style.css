@@ -16,19 +16,19 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .title {
   font-size: 3rem;
   text-align: center;
   background-color: rgb(179, 195, 249);
   margin: 2rem 0;
-  
 }
 
 .book-container {
- display: grid;
- grid-template-columns: 1fr 1fr 1fr;
- max-width: 1200px;
- margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .book {
@@ -51,18 +51,18 @@ body {
   display: flex;
   flex-direction: column;
   padding: 10px;
- }
+}
 
- .book-info span {
+.book-info span {
   margin: 6px;
- }
+}
 
- .btns {
-   display: flex;
-   justify-content: space-around;
- }
+.btns {
+  display: flex;
+  justify-content: space-around;
+}
 
- .btn {
+.btn {
   background-color: white;
   padding: 10px;
   border: 1px solid rgb(179, 195, 249);
@@ -70,33 +70,33 @@ body {
 	font: inherit;
   cursor: pointer;
   font-size: 12px;
- }
- 
- .form-container {
+}
+
+.form-container {
   display: inline-block;
   border: 1px solid black;
   padding: 10px;
   border-radius: 5px;
   width: 600px;
   margin: 0 auto;
- }
+}
 
-  form input {
-    height: 30px;
-    border: 1px solid gray;
-    border-radius: 5px;
-  }
+form input {
+  height: 30px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
 
-  .error-input {
-    color: red;
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-  } 
+.error-input {
+  color: red;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
 
-  .d-none {
-    display: none;
-  }
+.d-none {
+  display: none;
+}
 
-  .d-inline {
-    display: block;
-  }
+.d-inline {
+  display: block;
+}
