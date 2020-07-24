@@ -82,7 +82,8 @@ function toggleBook(index) {
   myLibrary[index].toggleRead();
   render();
 }
-
+/* eslint-enable */
+/* eslint-disable */
 function createBookWithForm() {
   const title = document.getElementById('title');
   const author = document.getElementById('author');
