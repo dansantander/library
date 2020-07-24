@@ -22,55 +22,72 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+function removeBook(index) {
+  myLibrary.splice(index, 1)
+  render()
+}
+
+function toggleBook(index) {
+  myLibrary[index].toggleRead()
+  render()
+}
+
 function render() {
   document.getElementById("book-container").innerHTML = "";
   myLibrary.forEach((book, index) => {
     div = document.createElement('DIV')
-    div.setAttribute('class', 'book')
+    div.classList.add('book')
     //div.innerHTML = book.info()
 
 
     h1 = document.createElement('H1')
-    h1.setAttribute('class', 'book-title')
+    h1.classList.add('book-title')
     h1.innerHTML = book.title
     div.appendChild(h1)
 
     div2 = document.createElement('DIV')
-    div2.setAttribute('class', 'book-info')
+    div2.classList.add('book-info')
     div.appendChild(div2)
 
     sp = document.createElement('SPAN')
-    sp.setAttribute('class', 'span')
+    sp.classList.add('span')
     sp.innerHTML = `Author: ${book.author}`
     div2.appendChild(sp)
 
     sp2 = document.createElement('SPAN')
-    sp2.setAttribute('class', 'span')
+    sp2.classList.add('span')
     sp2.innerHTML = `Num. Pages: ${book.numPages}`
     div2.appendChild(sp2)
 
     sp3 = document.createElement('SPAN')
-    sp3.setAttribute('class', 'span')
+    sp3.classList.add('span')
     sp3.innerHTML = `${book.read ? 'Already Read' : 'Not Read'}`
     div2.appendChild(sp3)
 
     div3 = document.createElement('DIV')
-    div3.setAttribute('class', 'btns')
+    div3.classList.add('btns')
     div.appendChild(div3)
 
     btn = document.createElement('BUTTON')
     btn.innerHTML = 'Remove'
-    btn.setAttribute('onclick', `removeBook(${index})`);
-    btn.setAttribute('class', `btn`);
+    btn.classList.add('btn')
+    btn.setAttribute('onclick', `removeBook(${index})`)
+//    btn.onclick = function removeBook() {
+//      myLibrary.splice(1, 1)
+//      render()
+//    }
+    console.log(btn)
+//  var x = document.getElementsByClassName("btn").onclick = displayDate;
     div3.appendChild(btn)
     
     btn2 = document.createElement('BUTTON')
     btn2.innerHTML = 'Read/Unread'
-    btn2.setAttribute('onclick', `toggleBook(${index})`);
-    btn2.setAttribute('class', `btn`);
+    btn2.setAttribute('onClick', `toggleBook(${index})`)
+    btn2.classList.add('btn')
     div3.appendChild(btn2)
 
     document.getElementById("book-container").appendChild(div);
+
   }) 
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
@@ -80,22 +97,34 @@ addBookToLibrary(book1)
 render() */
 
 function createBookWithForm(){
-  if (document.getElementById("title").value.trim() == "") {
-    alert('Fill Title')
-    document.getElementById("title").value = ''
-    document.getElementById("title").focus()
-    return
+  let title = document.getElementById("title")
+  let author = document.getElementById("author")
+  let numPages = document.getElementById("numPages")
+  let etitle = document.getElementById("error-title")
+  let eauthor = document.getElementById("error-author")
+  let enumPages = document.getElementById("error-pages")
+  etitle.classList.remove('d-inline')
+  eauthor.classList.remove('d-inline')
+  enumPages.classList.remove('d-inline')
+  etitle.classList.add('d-none')
+  eauthor.classList.add('d-none')
+  enumPages.classList.add('d-none')
+  if (numPages.value.trim() == "") {
+    numPages.value = ''
+    enumPages.classList.add('d-inline')
+    numPages.focus()
+  }  
+  if (author.value.trim() == "") {
+    author.value = ''
+    eauthor.classList.add('d-inline')
+    author.focus()
   }
-  if (document.getElementById("author").value.trim() == "") {
-    alert('Fill Author')
-    document.getElementById("author").value = ''
-    document.getElementById("author").focus()
-    return
+  if (title.value.trim() == "") {
+    title.value = ''
+    etitle.classList.add('d-inline')
+    title.focus()
   }
-  if (document.getElementById("numPages").value.trim() == "") {
-    alert('Fill Number of Pages')
-    document.getElementById("numPages").value = ''
-    document.getElementById("numPages").focus()
+  if (title.value.trim() == "" || author.value.trim() == "" || numPages.value.trim() == "") {
     return
   }
 
@@ -109,17 +138,6 @@ function createBookWithForm(){
   addBookToLibrary(book)
   render()
   
-}
-
-function removeBook(index) {
-  myLibrary.splice(index, 1)
-  render()
-}
-
-
-function toggleBook(index) {
-  myLibrary[index].toggleRead()
-  render()
 }
 
 function checkStored() {

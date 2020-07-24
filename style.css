@@ -72,5 +72,18 @@ body {
     height: 30px;
     border: 1px solid gray;
     border-radius: 5px;
+  }
+
+  .error-input {
+    color: red;
+    font-size: 0.8rem;
     margin-bottom: 10px;
+  } 
+
+  .d-none {
+    display: none;
+  }
+
+  .d-inline {
+    display: block;
   }
