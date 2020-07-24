@@ -37,8 +37,6 @@ function render() {
   myLibrary.forEach((book, index) => {
     div = document.createElement('DIV')
     div.classList.add('book')
-    //div.innerHTML = book.info()
-
 
     h1 = document.createElement('H1')
     h1.classList.add('book-title')
@@ -71,13 +69,9 @@ function render() {
     btn = document.createElement('BUTTON')
     btn.innerHTML = 'Remove'
     btn.classList.add('btn')
+    
     btn.setAttribute('onclick', `removeBook(${index})`)
-//    btn.onclick = function removeBook() {
-//      myLibrary.splice(1, 1)
-//      render()
-//    }
-    console.log(btn)
-//  var x = document.getElementsByClassName("btn").onclick = displayDate;
+
     div3.appendChild(btn)
     
     btn2 = document.createElement('BUTTON')
@@ -89,12 +83,9 @@ function render() {
     document.getElementById("book-container").appendChild(div);
 
   }) 
+  
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
-
-/* const book1 = new Book('Game Of Thrones', 'George Martin', 789, 'already read' );
-addBookToLibrary(book1)
-render() */
 
 function createBookWithForm(){
   let title = document.getElementById("title")
@@ -143,7 +134,6 @@ function createBookWithForm(){
 function checkStored() {
   if(localStorage.getItem("myLibrary")) {
       myLocalLibrary = JSON.parse((localStorage.getItem("myLibrary")));
-      console.log(myLocalLibrary);
       myLocalLibrary.forEach((book, index) => {
         t = book.title
         a = book.author
