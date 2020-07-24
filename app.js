@@ -5,13 +5,13 @@ function Book(title, author, numPages, read) {
   this.read = read;
 }
 
-Book.prototype.toggleRead = function () {
+Book.prototype.toggleRead = function toggleRead() {
   if (this.read) {
     this.read = false;
   } else {
     this.read = true;
   }
-}
+};
 
 const myLibrary = [];
 
@@ -68,8 +68,7 @@ function render() {
     div3.appendChild(btn2);
 
     document.getElementById('book-container').appendChild(div);
-
-  })
+  });
 
   localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 }
@@ -101,7 +100,7 @@ function createBookWithForm() {
     numPages.value = '';
     enumPages.classList.add('d-inline');
     numPages.focus();
-  }  
+  }
   if (author.value.trim() === '') {
     author.value = '';
     eauthor.classList.add('d-inline');
@@ -116,10 +115,10 @@ function createBookWithForm() {
     return;
   }
 
-  t = document.getElementById('title').value;
-  a = document.getElementById('author').value;
-  p = document.getElementById('numPages').value;
-  r = document.getElementById('read').checked;
+  const t = document.getElementById('title').value;
+  const a = document.getElementById('author').value;
+  const p = document.getElementById('numPages').value;
+  const r = document.getElementById('read').checked;
 
   const book = new Book(t, a, p, r);
 
@@ -129,15 +128,15 @@ function createBookWithForm() {
 
 function checkStored() {
   if (localStorage.getItem('myLibrary')) {
-    myLocalLibrary = JSON.parse((localStorage.getItem('myLibrary')));
-    myLocalLibrary.forEach((book, index) => {
+    const myLocalLibrary = JSON.parse((localStorage.getItem('myLibrary')));
+    myLocalLibrary.forEach((book) => {
       const t = book.title;
       const a = book.author;
       const p = book.numPages;
       const r = book.read;
       const book2 = new Book(t, a, p, r);
       addBookToLibrary(book2);
-    })
+    });
     render();
   }
 }
