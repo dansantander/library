@@ -5,7 +5,7 @@ function Book(title, author, numPages, read) {
   this.read = read;
 }
 
-Book.prototype.toggleRead = function toggleRead() {
+Book.prototype.toggleRead = function () {
   if (this.read) {
     this.read = false;
   } else {
@@ -58,7 +58,6 @@ function render() {
     btn.classList.add('btn');
 
     btn.setAttribute('onclick', `removeBook(${index})`);
-
     div3.appendChild(btn);
 
     const btn2 = document.createElement('BUTTON');
